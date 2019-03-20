@@ -19,8 +19,7 @@
     <ul class="nav navbar-nav">
       <li class="active"><a href="/">All Books</a></li>
       <li><a href="newBook">New Book Record</a></li>
-      <li><a href="#">Page 2</a></li>
-      <li><a href="#">Page 3</a></li>
+   
     </ul>
   </div>
 </nav>
@@ -28,8 +27,8 @@
 <div class="container">
 <c:choose>
 <c:when test = "${mode == 'BOOK_VIEW'}">
- <h2>Striped Rows</h2>
-  <p>The .table-striped class adds zebra-stripes to a table:</p>            
+ <h2>Rows Books Gyyy</h2>
+  <p>Redline Berdychev Book:</p>            
   <table class="table table-striped">
     <thead>
       <tr>
@@ -49,14 +48,14 @@
         <td>${book.author}</td>
         <td>${book.purchaseDate}</td>
         <td><a href="updateBook?id=${book.id}"><div class="glyphicon glyphicon-pencil"></div></a></td>
-        <td><a href="delete?id=${book.id}"><div class="glyphicon glyphicon-trash"></div></a></td>
+        <td><a href="deleteBook?id=${book.id}"><div class="glyphicon glyphicon-trash"></div></a></td>
       </tr>
     </c:forEach>
     </tbody>
   </table>
   </c:when>
   <c:when test="${mode == 'BOOK_EDIT'|| mode == 'BOOK_NEW'}">
-   <form action="save" method = "POST">
+   <form action="save" method = "post">
          <input type="hidden" class="form-control" value = "${book.id}" name="id" id="id">
     <div class="form-group">
       <label for="bookName">Book Name:</label>
@@ -74,8 +73,8 @@
   </form>
   </c:when>
   </c:choose>
-  <h3>Inverted Navbar</h3>
-  <p>An inverted navbar is black instead of gray.</p>
+  <h3>Redline</h3>
+  <p>RedCoreLimited 2019</p>
 </div>
 
 </body>

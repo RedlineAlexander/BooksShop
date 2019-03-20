@@ -36,9 +36,9 @@ public class MainController {
 	}
 	
 	@GetMapping("/updateBook")
-public String init(@RequestParam (value = "id", required = false) Integer id, HttpServletRequest req) {
+public String init(@RequestParam /*(value = "id", required = false) */Integer id, HttpServletRequest req) {
 		req.setAttribute("books", bookService.findOne(id));
-		req.setAttribute("mode", "BOOK_VIEW");
+		req.setAttribute("mode", "BOOK_EDIT");
 		return "index";
 		
 	}
@@ -47,13 +47,13 @@ public String init(@RequestParam (value = "id", required = false) Integer id, Ht
 		binder.registerCustomEditor(Date.class, new CustomDateEditor(new SimpleDateFormat("yyyy-mm-dd"),false));
 	}
 	@PostMapping("/save")
-	public String save(@ModelAttribute Book book, BindingResult bindingResult,HttpServletRequest req) { //, HttpServletResponse resp) throws Throwable {
+	public void save(@ModelAttribute Book book, BindingResult bindingResult,HttpServletRequest req ,HttpServletResponse resp) throws IOException {
 		bookService.save(book);
-		book = null;
+	//	book = null;
 		req.setAttribute("books", bookService.findAllBooks());
 		req.setAttribute("mode", "BOOK_VIEW");
-	//	resp.sendRedirect("/");
-		return "index";
+		resp.sendRedirect("/");
+	//	return "index";
 		
 	}
 	@GetMapping("/newBook")
@@ -62,9 +62,9 @@ public String init(@RequestParam (value = "id", required = false) Integer id, Ht
 		return "index";
 	}
 	@GetMapping("/deleteBook")
-	public String deleteBook(HttpServletRequest req) {
-		req.setAttribute("mode", "BOOK_NEW");
-		return "index";
+	public void deleteBook(@RequestParam Integer id, HttpServletRequest req, HttpServletResponse resp) throws IOException {
+		bookService.delete(id);
+		resp.sendRedirect("/");
 	}
 	
 

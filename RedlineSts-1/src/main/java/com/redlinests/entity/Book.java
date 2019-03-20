@@ -11,6 +11,7 @@ import org.hibernate.annotations.GenericGenerator;
 @Entity(name = "book")
 public class Book {
 @Id
+@Column(name = "id", nullable = false)
 @GeneratedValue(strategy = GenerationType.IDENTITY)
 private Integer id;
 @Column(name = "bookname")
